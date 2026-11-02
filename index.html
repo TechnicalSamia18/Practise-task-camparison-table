@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare plans – Starter, Team and Business</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Compare plans</h1>
+    <p class="intro">
+      Starter, Team and Business compared across 15 features.
+      Turn on “Highlight differences” to see where the plans actually differ.
+    </p>
+
+    <!-- Shown by script.js. Without JavaScript the full table still works. -->
+    <div class="controls" id="controls" hidden>
+      <button type="button" id="diff-toggle" class="toggle"
+              aria-pressed="false" aria-describedby="diff-help">
+        <span class="toggle-track" aria-hidden="true"><span class="toggle-thumb"></span></span>
+        Highlight differences
+      </button>
+      <p id="diff-help" class="help">
+        Marks each feature where the plans differ with a “Differs” label.
+        Features that are the same on every plan stay visible, in grey.
+      </p>
+    </div>
+    <p id="diff-status" class="status" role="status"></p>
+
+    <!--
+      Explicit ARIA roles are deliberate. On narrow screens the table is
+      re-laid out with CSS display values, and some browsers drop native
+      table semantics when that happens. The roles keep the structure
+      exposed to assistive technology at every width.
+    -->
+    <table id="comparison" role="table" aria-labelledby="comparison-caption">
+      <caption id="comparison-caption" class="visually-hidden">
+        Starter, Team and Business plans compared across 15 features
+      </caption>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th scope="col" role="columnheader" class="corner">Feature</th>
+          <th scope="col" role="columnheader">Starter</th>
+          <th scope="col" role="columnheader">Team</th>
+          <th scope="col" role="columnheader">Business</th>
+        </tr>
+      </thead>
+
+      <tbody role="rowgroup">
+        <tr role="row" class="group"><th scope="rowgroup" colspan="4" role="rowheader">Basics</th></tr>
+        <tr role="row"><th scope="row" role="rowheader">Price per user, monthly</th><td role="cell">Free</td><td role="cell">$12</td><td role="cell">$29</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Projects</th><td role="cell">3</td><td role="cell">Unlimited</td><td role="cell">Unlimited</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Storage</th><td role="cell">2 GB</td><td role="cell">100 GB</td><td role="cell">1 TB</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Version history</th><td role="cell">7 days</td><td role="cell">90 days</td><td role="cell">Unlimited</td></tr>
+      </tbody>
+
+      <tbody role="rowgroup">
+        <tr role="row" class="group"><th scope="rowgroup" colspan="4" role="rowheader">Collaboration</th></tr>
+        <tr role="row"><th scope="row" role="rowheader">Team members</th><td role="cell">1</td><td role="cell">Up to 50</td><td role="cell">Unlimited</td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Guest access</th>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Comments and mentions</th>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Shared templates</th>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+      </tbody>
+
+      <tbody role="rowgroup">
+        <tr role="row" class="group"><th scope="rowgroup" colspan="4" role="rowheader">Security</th></tr>
+        <tr role="row"><th scope="row" role="rowheader">Two-factor authentication</th>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Single sign-on (SSO)</th>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Audit log</th>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Encryption at rest</th>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+      </tbody>
+
+      <tbody role="rowgroup">
+        <tr role="row" class="group"><th scope="rowgroup" colspan="4" role="rowheader">Support</th></tr>
+        <tr role="row"><th scope="row" role="rowheader">Help centre and community</th>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Email support</th>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td>
+          <td role="cell" class="yes"><span aria-hidden="true">✓</span><span class="visually-hidden">Included</span></td></tr>
+        <tr role="row"><th scope="row" role="rowheader">Uptime SLA</th>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell" class="no"><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td>
+          <td role="cell">99.9%</td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>
